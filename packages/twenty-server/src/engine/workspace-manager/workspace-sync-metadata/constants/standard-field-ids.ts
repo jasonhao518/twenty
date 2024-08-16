@@ -304,6 +304,24 @@ export const OPPORTUNITY_STANDARD_FIELD_IDS = {
   timelineActivities: '20202020-30e2-421f-96c7-19c69d1cf631',
 };
 
+export const ACCOUNT_STANDARD_FIELD_IDS = {
+  name: '20202020-8609-4f65-a2d9-44009eb422b1',
+  amount: '20202020-583e-4642-8533-db761d5fa821',
+  closeDate: '20202020-527e-44d6-b1ac-c4158d307b91',
+  probabilityDeprecated: '20202020-69d4-45f3-9703-690b09fafcf1',
+  stage: '20202020-6f76-477d-8551-28cd65b2b4b1',
+  position: '20202020-806d-493a-bbc6-6313e62958e1',
+  createdBy: '20202020-a63e-4a62-8e63-42a51828f832',
+  pointOfContact: '20202020-8dfb-42fc-92b6-01afb759ed11',
+  company: '20202020-cbac-457e-b565-adece5fc8151',
+  favorites: '20202020-a1c2-4500-aaae-83ba8a0e8271',
+  activityTargets: '20202020-220a-42d6-8261-b2102d6eab31',
+  taskTargets: '20202020-59c0-4179-a208-4a255f04a5b1',
+  noteTargets: '20202020-dd3f-42d5-a382-db58aabf43d1',
+  attachments: '20202020-87c7-4118-83d6-2f4031005201',
+  timelineActivities: '20202020-30e2-421f-96c7-19c69d1cf632',
+};
+
 export const PERSON_STANDARD_FIELD_IDS = {
   name: '20202020-3875-44d5-8c33-a6239011cab8',
   email: '20202020-a740-42bb-8849-8980fb3f12e1',

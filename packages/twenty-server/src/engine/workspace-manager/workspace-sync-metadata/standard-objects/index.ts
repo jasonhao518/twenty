@@ -1,3 +1,4 @@
+import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
 import { ActivityTargetWorkspaceEntity } from 'src/modules/activity/standard-objects/activity-target.workspace-entity';
 import { ActivityWorkspaceEntity } from 'src/modules/activity/standard-objects/activity.workspace-entity';
 import { CommentWorkspaceEntity } from 'src/modules/activity/standard-objects/comment.workspace-entity';
@@ -75,7 +76,7 @@ export const standardObjectMetadataDefinitions = [
   MessageChannelMessageAssociationWorkspaceEntity,
   NoteWorkspaceEntity,
   NoteTargetWorkspaceEntity,
-  OpportunityWorkspaceEntity,
+  AccountWorkspaceEntity,
   PersonWorkspaceEntity,
   TaskWorkspaceEntity,
   TaskTargetWorkspaceEntity,
