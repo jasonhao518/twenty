@@ -169,6 +169,21 @@ export class AttachmentWorkspaceEntity extends BaseWorkspaceEntity {
   opportunityId: string | null;
 
   @WorkspaceRelation({
+    standardId: ATTACHMENT_STANDARD_FIELD_IDS.account,
+    type: RelationMetadataType.MANY_TO_ONE,
+    label: 'Account',
+    description: 'Attachment account',
+    icon: 'IconBuildingSkyscraper',
+    inverseSideTarget: () => OpportunityWorkspaceEntity,
+    inverseSideFieldKey: 'attachments',
+  })
+  @WorkspaceIsNullable()
+  account: Relation<OpportunityWorkspaceEntity> | null;
+
+  @WorkspaceJoinColumn('account')
+  accountId: string | null;
+
+  @WorkspaceRelation({
     standardId: ATTACHMENT_STANDARD_FIELD_IDS.workflow,
     type: RelationMetadataType.MANY_TO_ONE,
     label: 'Workflow',
