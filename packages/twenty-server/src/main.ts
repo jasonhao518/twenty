@@ -2,11 +2,17 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
+import {
+  CopilotRuntime,
+  OpenAIAdapter,
+  copilotRuntimeNodeHttpEndpoint,
+} from '@copilotkit/runtime';
 import * as Sentry from '@sentry/node';
 import '@sentry/tracing';
 import bytes from 'bytes';
 import { useContainer } from 'class-validator';
 import { graphqlUploadExpress } from 'graphql-upload';
+import OpenAI from 'openai';
 
 import { ApplyCorsToExceptions } from 'src/utils/apply-cors-to-exceptions';
 
@@ -20,6 +26,7 @@ const bootstrap = async () => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: true,
     bufferLogs: process.env.LOGGER_IS_BUFFER_ENABLED === 'true',
+    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
     rawBody: true,
     snapshot: process.env.DEBUG_MODE === 'true',
   });
@@ -64,6 +71,45 @@ const bootstrap = async () => {
 
   // Create the env-config.js of the front at runtime
   generateFrontConfig();
+
+  const openai = new OpenAI();
+  const serviceAdapter = new OpenAIAdapter({ openai });
+
+  const runtime = new CopilotRuntime({
+    actions: [
+      {
+        name: 'sayHello',
+        description: 'say hello so someone by roasting their name',
+        parameters: [
+          {
+            name: 'roast',
+            description: 'A sentence or two roasting the name of the person',
+            type: 'string',
+            required: true,
+          },
+        ],
+        handler: ({ roast }: { roast: string }) => {
+          console.log(roast);
+
+          return 'The person has been roasted.';
+        },
+      },
+    ],
+  });
+
+  const copilotRuntime = copilotRuntimeNodeHttpEndpoint({
+    endpoint: '/api/copilotkit',
+    runtime,
+    serviceAdapter,
+  });
+
+  // app.use("/copilotkit", copilotRuntime);
+
+  // OR
+
+  app.use('/api/copilotkit', (req, res, next) => {
+    return copilotRuntime(req, res, next);
+  });
 
   await app.listen(process.env.PORT ?? 3000);
 };

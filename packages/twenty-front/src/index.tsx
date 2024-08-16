@@ -14,8 +14,12 @@ import '@emotion/react';
 
 import { App } from './App';
 
-import './index.css';
 import 'react-loading-skeleton/dist/skeleton.css';
+import './index.css';
+
+import { CopilotKit } from '@copilotkit/react-core';
+import { CopilotSidebar } from '@copilotkit/react-ui';
+import '@copilotkit/react-ui/styles.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') ?? document.body,
@@ -31,7 +35,21 @@ root.render(
           <IconsProvider>
             <ExceptionHandlerProvider>
               <HelmetProvider>
-                <App />
+                <CopilotKit
+                  runtimeUrl={
+                    (process.env.REACT_APP_SERVER_BASE_URL ??
+                      'http://localhost:3000') + '/api/copilotkit'
+                  }
+                >
+                  <CopilotSidebar
+                    labels={{
+                      title: 'Your Assistant',
+                      initial: 'Hi! 👋 How can I assist you today?',
+                    }}
+                  >
+                    <App />
+                  </CopilotSidebar>
+                </CopilotKit>
               </HelmetProvider>
             </ExceptionHandlerProvider>
           </IconsProvider>
