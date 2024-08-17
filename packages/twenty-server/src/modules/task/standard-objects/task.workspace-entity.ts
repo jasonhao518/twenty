@@ -32,6 +32,7 @@ import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-o
   description: 'A task',
   icon: 'IconCheckbox',
   labelIdentifierStandardId: TASK_STANDARD_FIELD_IDS.title,
+  softDelete: true,
 })
 export class TaskWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceField({
