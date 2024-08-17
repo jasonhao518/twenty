@@ -139,6 +139,7 @@ export const RecordInlineCellContainer = () => {
       )}
       <StyledValueContainer>
         <RecordInlineCellValue />
+        {label === 'Email' && <button>register</button>}
       </StyledValueContainer>
     </StyledInlineCellBaseContainer>
   );

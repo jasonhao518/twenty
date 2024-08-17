@@ -328,6 +328,7 @@ export const ACCOUNT_STANDARD_FIELD_IDS = {
 
 export const PERSON_STANDARD_FIELD_IDS = {
   name: '20202020-3875-44d5-8c33-a6239011cab8',
+  assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbeb',
   email: '20202020-a740-42bb-8849-8980fb3f12e1',
   linkedinLink: '20202020-f1af-48f7-893b-2007a73dd508',
   xLink: '20202020-8fc2-487c-b84a-55a99b145cfd',
@@ -458,7 +459,6 @@ export const WORKSPACE_MEMBER_STANDARD_FIELD_IDS = {
   userId: '20202020-75a9-4dfc-bf25-2e4b43e89820',
   authoredActivities: '20202020-f139-4f13-a82f-a65a8d290a74',
   assignedActivities: '20202020-5c97-42b6-8ca9-c07622cbb33f',
-  assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbeb',
   favorites: '20202020-f3c1-4faf-b343-cf7681038757',
   accountOwnerForCompanies: '20202020-dc29-4bd4-a3c1-29eafa324bee',
   authoredAttachments: '20202020-000f-4947-917f-1b09851024fe',

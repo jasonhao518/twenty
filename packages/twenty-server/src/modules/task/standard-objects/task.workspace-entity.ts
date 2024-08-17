@@ -20,9 +20,9 @@ import { TASK_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
 import { AttachmentWorkspaceEntity } from 'src/modules/attachment/standard-objects/attachment.workspace-entity';
 import { FavoriteWorkspaceEntity } from 'src/modules/favorite/standard-objects/favorite.workspace-entity';
+import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
 import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-objects/timeline-activity.workspace-entity';
-import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
 
 @WorkspaceEntity({
   standardId: STANDARD_OBJECT_IDS.task,
@@ -144,12 +144,12 @@ export class TaskWorkspaceEntity extends BaseWorkspaceEntity {
     description: 'Task assignee',
     icon: 'IconUserCircle',
     type: RelationMetadataType.MANY_TO_ONE,
-    inverseSideTarget: () => WorkspaceMemberWorkspaceEntity,
+    inverseSideTarget: () => PersonWorkspaceEntity,
     inverseSideFieldKey: 'assignedTasks',
     onDelete: RelationOnDeleteAction.SET_NULL,
   })
   @WorkspaceIsNullable()
-  assignee: Relation<WorkspaceMemberWorkspaceEntity> | null;
+  assignee: Relation<PersonWorkspaceEntity> | null;
 
   @WorkspaceJoinColumn('assignee')
   assigneeId: string | null;
