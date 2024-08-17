@@ -17,6 +17,7 @@ import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-re
 import { TIMELINE_ACTIVITY_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
 import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
+import { AgentWorkspaceEntity } from 'src/modules/agent/standard-objects/agent.workspace-entity';
 import { CompanyWorkspaceEntity } from 'src/modules/company/standard-objects/company.workspace-entity';
 import { NoteWorkspaceEntity } from 'src/modules/note/standard-objects/note.workspace-entity';
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
@@ -162,7 +163,7 @@ export class TimelineActivityWorkspaceEntity extends BaseWorkspaceEntity {
     label: 'Account',
     description: 'Event account',
     icon: 'IconTargetArrow',
-    inverseSideTarget: () => OpportunityWorkspaceEntity,
+    inverseSideTarget: () => AccountWorkspaceEntity,
     inverseSideFieldKey: 'timelineActivities',
   })
   @WorkspaceIsNullable()
@@ -170,6 +171,21 @@ export class TimelineActivityWorkspaceEntity extends BaseWorkspaceEntity {
 
   @WorkspaceJoinColumn('account')
   accountId: string | null;
+
+  @WorkspaceRelation({
+    standardId: TIMELINE_ACTIVITY_STANDARD_FIELD_IDS.agent,
+    type: RelationMetadataType.MANY_TO_ONE,
+    label: 'Agent',
+    description: 'Event agent',
+    icon: 'IconTargetArrow',
+    inverseSideTarget: () => AgentWorkspaceEntity,
+    inverseSideFieldKey: 'timelineActivities',
+  })
+  @WorkspaceIsNullable()
+  agent: Relation<AgentWorkspaceEntity> | null;
+
+  @WorkspaceJoinColumn('agent')
+  agentId: string | null;
 
   @WorkspaceRelation({
     standardId: TIMELINE_ACTIVITY_STANDARD_FIELD_IDS.note,

@@ -5,6 +5,8 @@ import { FeatureFlagKey } from 'src/engine/core-modules/feature-flag/enums/featu
 import { FeatureFlagEntity } from 'src/engine/core-modules/feature-flag/feature-flag.entity';
 import { ObjectMetadataEntity } from 'src/engine/metadata-modules/object-metadata/object-metadata.entity';
 import { accountsAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/accounts-all.view';
+import { agentsAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/agents-all.view';
+
 import { activitiesAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/activities-all.view';
 import { companiesAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/companies-all.view';
 import { notesAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/notes-all.view';
@@ -35,6 +37,8 @@ export const viewPrefillData = async (
     await notesAllView(objectMetadataMap),
     await tasksAllView(objectMetadataMap),
     await accountsAllView(objectMetadataMap),
+    await agentsAllView(objectMetadataMap),
+        
     await tasksByStatusView(objectMetadataMap),
     ...(isWorkflowEnabled ? [await workflowsAllView(objectMetadataMap)] : []),
   ];

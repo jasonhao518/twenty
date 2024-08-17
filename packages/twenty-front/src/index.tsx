@@ -14,8 +14,8 @@ import '@emotion/react';
 
 import { App } from './App';
 
-import 'react-loading-skeleton/dist/skeleton.css';
 import './index.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import { CopilotKit } from '@copilotkit/react-core';
 import { CopilotSidebar } from '@copilotkit/react-ui';

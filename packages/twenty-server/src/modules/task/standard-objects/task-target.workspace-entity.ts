@@ -14,6 +14,7 @@ import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-re
 import { TASK_TARGET_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
 import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
+import { AgentWorkspaceEntity } from 'src/modules/agent/standard-objects/agent.workspace-entity';
 import { CompanyWorkspaceEntity } from 'src/modules/company/standard-objects/company.workspace-entity';
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
 import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
@@ -105,6 +106,21 @@ export class TaskTargetWorkspaceEntity extends BaseWorkspaceEntity {
 
   @WorkspaceJoinColumn('account')
   accountId: string | null;
+
+  @WorkspaceRelation({
+    standardId: TASK_TARGET_STANDARD_FIELD_IDS.agent,
+    type: RelationMetadataType.MANY_TO_ONE,
+    label: 'Agent',
+    description: 'TaskTarget agent',
+    icon: 'IconTargetArrow',
+    inverseSideTarget: () => AgentWorkspaceEntity,
+    inverseSideFieldKey: 'taskTargets',
+  })
+  @WorkspaceIsNullable()
+  agent: Relation<AgentWorkspaceEntity> | null;
+
+  @WorkspaceJoinColumn('agent')
+  agentId: string | null;
 
   @WorkspaceDynamicRelation({
     type: RelationMetadataType.MANY_TO_ONE,

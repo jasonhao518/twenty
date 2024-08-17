@@ -29,7 +29,6 @@ import { MessageParticipantWorkspaceEntity } from 'src/modules/messaging/common/
 import { NoteTargetWorkspaceEntity } from 'src/modules/note/standard-objects/note-target.workspace-entity';
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
-import { TaskWorkspaceEntity } from 'src/modules/task/standard-objects/task.workspace-entity';
 import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-objects/timeline-activity.workspace-entity';
 
 @WorkspaceEntity({
@@ -256,18 +255,6 @@ export class PersonWorkspaceEntity extends BaseWorkspaceEntity {
   calendarEventParticipants: Relation<
     CalendarEventParticipantWorkspaceEntity[]
   >;
-
-  @WorkspaceRelation({
-    standardId: PERSON_STANDARD_FIELD_IDS.assignedTasks,
-    type: RelationMetadataType.ONE_TO_MANY,
-    label: 'Assigned tasks',
-    description: 'Tasks assigned to the workspace member',
-    icon: 'IconCheckbox',
-    inverseSideTarget: () => TaskWorkspaceEntity,
-    inverseSideFieldKey: 'assignee',
-    onDelete: RelationOnDeleteAction.SET_NULL,
-  })
-  assignedTasks: Relation<TaskWorkspaceEntity[]>;
 
   @WorkspaceRelation({
     standardId: PERSON_STANDARD_FIELD_IDS.timelineActivities,

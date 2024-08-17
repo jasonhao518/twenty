@@ -119,14 +119,6 @@ export const ShowPageRightContainer = ({
       hide: !isMobile,
     },
     {
-      id: 'accounts',
-      title: 'Accounts',
-      Icon: IconTimelineEvent,
-      hide:
-        targetableObject.targetObjectNameSingular !=
-        CoreObjectNameSingular.Person,
-    },
-    {
       id: 'timeline',
       title: 'Timeline',
       Icon: IconTimelineEvent,
@@ -209,8 +201,6 @@ export const ShowPageRightContainer = ({
       case 'emails':
         return <EmailThreads targetableObject={targetableObject} />;
       case 'calendar':
-        return <Calendar targetableObject={targetableObject} />;
-      case 'accounts':
         return <Calendar targetableObject={targetableObject} />;
       default:
         return <></>;
