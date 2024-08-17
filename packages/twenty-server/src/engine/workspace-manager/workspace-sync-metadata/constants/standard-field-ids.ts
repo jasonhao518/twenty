@@ -332,6 +332,7 @@ export const ACCOUNT_STANDARD_FIELD_IDS = {
 };
 
 export const AGENT_STANDARD_FIELD_IDS = {
+  assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbeb',
   name: '20202020-8609-1f65-a2d9-44009eb422b1',
   amount: '20202020-583e-1642-8533-db761d5fa821',
   closeDate: '20202020-127e-44d6-b1ac-c4158d307b91',
@@ -482,7 +483,6 @@ export const WORKSPACE_MEMBER_STANDARD_FIELD_IDS = {
   userId: '20202020-75a9-4dfc-bf25-2e4b43e89820',
   authoredActivities: '20202020-f139-4f13-a82f-a65a8d290a74',
   assignedActivities: '20202020-5c97-42b6-8ca9-c07622cbb33f',
-  assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbeb',
   favorites: '20202020-f3c1-4faf-b343-cf7681038757',
   accountOwnerForCompanies: '20202020-dc29-4bd4-a3c1-29eafa324bee',
   authoredAttachments: '20202020-000f-4947-917f-1b09851024fe',

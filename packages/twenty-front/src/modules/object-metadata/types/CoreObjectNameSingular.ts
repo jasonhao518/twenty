@@ -1,5 +1,6 @@
 export enum CoreObjectNameSingular {
   Activity = 'activity',
+  Agent = 'agent',
   ActivityTarget = 'activityTarget',
   ApiKey = 'apiKey',
   Attachment = 'attachment',

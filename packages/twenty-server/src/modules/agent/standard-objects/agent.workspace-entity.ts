@@ -28,6 +28,7 @@ import { ActivityTargetWorkspaceEntity } from 'src/modules/activity/standard-obj
 import { AttachmentWorkspaceEntity } from 'src/modules/attachment/standard-objects/attachment.workspace-entity';
 import { NoteTargetWorkspaceEntity } from 'src/modules/note/standard-objects/note-target.workspace-entity';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
+import { TaskWorkspaceEntity } from 'src/modules/task/standard-objects/task.workspace-entity';
 import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-objects/timeline-activity.workspace-entity';
 
 @WorkspaceEntity({
@@ -186,4 +187,16 @@ export class AgentWorkspaceEntity extends BaseWorkspaceEntity {
   })
   @WorkspaceIsDeprecated()
   probability: string;
+
+  @WorkspaceRelation({
+    standardId: AGENT_STANDARD_FIELD_IDS.assignedTasks,
+    type: RelationMetadataType.ONE_TO_MANY,
+    label: 'Assigned tasks',
+    description: 'Tasks assigned to the workspace member',
+    icon: 'IconCheckbox',
+    inverseSideTarget: () => TaskWorkspaceEntity,
+    inverseSideFieldKey: 'assignee',
+    onDelete: RelationOnDeleteAction.SET_NULL,
+  })
+  assignedTasks: Relation<TaskWorkspaceEntity[]>;
 }
