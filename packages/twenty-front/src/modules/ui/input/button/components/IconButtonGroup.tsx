@@ -1,6 +1,7 @@
-import { MouseEvent } from 'react';
 import styled from '@emotion/styled';
+import { MouseEvent } from 'react';
 import { IconComponent } from 'twenty-ui';
+import { v4 as uuidv4 } from 'uuid';
 
 import { IconButton, IconButtonPosition, IconButtonProps } from './IconButton';
 
@@ -38,6 +39,7 @@ export const IconButtonGroup = ({
 
       return (
         <IconButton
+          key={uuidv4()}
           accent={accent}
           Icon={Icon}
           onClick={onClick}

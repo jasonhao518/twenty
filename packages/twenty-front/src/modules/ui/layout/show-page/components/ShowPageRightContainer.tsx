@@ -124,7 +124,7 @@ export const ShowPageRightContainer = ({
       title: 'Accounts',
       Icon: IconNotes,
       hide:
-        targetableObject.targetObjectNameSingular !=
+        targetableObject.targetObjectNameSingular !==
         CoreObjectNameSingular.Agent,
     },
     {

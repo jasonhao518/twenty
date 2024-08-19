@@ -39,6 +39,7 @@ import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-o
   icon: 'IconTargetArrow',
   labelIdentifierStandardId: ACCOUNT_STANDARD_FIELD_IDS.name,
 })
+@WorkspaceIsSystem()
 @WorkspaceIsNotAuditLogged()
 export class AccountWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceField({

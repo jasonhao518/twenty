@@ -4,7 +4,6 @@ import {
   ActorMetadata,
   FieldActorSource,
 } from 'src/engine/metadata-modules/field-metadata/composite-types/actor.composite-type';
-import { CurrencyMetadata } from 'src/engine/metadata-modules/field-metadata/composite-types/currency.composite-type';
 import { FieldMetadataType } from 'src/engine/metadata-modules/field-metadata/field-metadata.entity';
 import {
   RelationMetadataType,
@@ -14,7 +13,6 @@ import { BaseWorkspaceEntity } from 'src/engine/twenty-orm/base.workspace-entity
 import { WorkspaceEntity } from 'src/engine/twenty-orm/decorators/workspace-entity.decorator';
 import { WorkspaceField } from 'src/engine/twenty-orm/decorators/workspace-field.decorator';
 import { WorkspaceIndex } from 'src/engine/twenty-orm/decorators/workspace-index.decorator';
-import { WorkspaceIsDeprecated } from 'src/engine/twenty-orm/decorators/workspace-is-deprecated.decorator';
 import { WorkspaceIsNotAuditLogged } from 'src/engine/twenty-orm/decorators/workspace-is-not-audit-logged.decorator';
 import { WorkspaceIsNullable } from 'src/engine/twenty-orm/decorators/workspace-is-nullable.decorator';
 import { WorkspaceIsSystem } from 'src/engine/twenty-orm/decorators/workspace-is-system.decorator';
@@ -31,6 +29,12 @@ import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/tas
 import { TaskWorkspaceEntity } from 'src/modules/task/standard-objects/task.workspace-entity';
 import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-objects/timeline-activity.workspace-entity';
 
+export enum AgentGender {
+  FEMALE = 'FEMALE',
+  MALE = 'MALE',
+  UNKNOWN = 'UNKNOWN',
+}
+
 @WorkspaceEntity({
   standardId: STANDARD_OBJECT_IDS.agent,
   namePlural: 'agents',
@@ -44,7 +48,7 @@ import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-o
 export class AgentWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: AGENT_STANDARD_FIELD_IDS.name,
-    type: FieldMetadataType.TEXT,
+    type: FieldMetadataType.FULL_NAME,
     label: 'Name',
     description: 'The opportunity name',
     icon: 'IconTargetArrow',
@@ -52,14 +56,63 @@ export class AgentWorkspaceEntity extends BaseWorkspaceEntity {
   name: string;
 
   @WorkspaceField({
-    standardId: AGENT_STANDARD_FIELD_IDS.amount,
-    type: FieldMetadataType.CURRENCY,
-    label: 'Amount',
-    description: 'Opportunity amount',
-    icon: 'IconCurrencyDollar',
+    standardId: AGENT_STANDARD_FIELD_IDS.country,
+    type: FieldMetadataType.TEXT,
+    label: 'country',
+    description: 'Contact’s country',
+    icon: 'IconMap',
+  })
+  country: string;
+
+  @WorkspaceField({
+    standardId: AGENT_STANDARD_FIELD_IDS.city,
+    type: FieldMetadataType.TEXT,
+    label: 'City',
+    description: 'Contact’s city',
+    icon: 'IconMap',
+  })
+  city: string;
+
+  @WorkspaceField({
+    standardId: AGENT_STANDARD_FIELD_IDS.gender,
+    type: FieldMetadataType.SELECT,
+    label: 'Gender',
+    description:
+      'Automatically create records for people you participated with in an event.',
+    icon: 'IconUserCircle',
+    options: [
+      {
+        value: AgentGender.MALE,
+        label: 'Male',
+        color: 'green',
+        position: 0,
+      },
+      {
+        value: AgentGender.FEMALE,
+        label: 'Female',
+        color: 'orange',
+        position: 1,
+      },
+      {
+        value: AgentGender.UNKNOWN,
+        label: 'Unknown',
+        color: 'blue',
+        position: 2,
+      },
+    ],
+    defaultValue: `'${AgentGender.UNKNOWN}'`,
+  })
+  gender: AgentGender;
+
+  @WorkspaceField({
+    standardId: AGENT_STANDARD_FIELD_IDS.birthday,
+    type: FieldMetadataType.DATE,
+    label: 'Birthday',
+    description: 'Opportunity birthday',
+    icon: 'IconCalendarEvent',
   })
   @WorkspaceIsNullable()
-  amount: CurrencyMetadata | null;
+  birthday: Date | null;
 
   @WorkspaceField({
     standardId: AGENT_STANDARD_FIELD_IDS.closeDate,
@@ -178,15 +231,14 @@ export class AgentWorkspaceEntity extends BaseWorkspaceEntity {
   timelineActivities: Relation<TimelineActivityWorkspaceEntity[]>;
 
   @WorkspaceField({
-    standardId: AGENT_STANDARD_FIELD_IDS.probabilityDeprecated,
-    type: FieldMetadataType.TEXT,
-    label: 'Probability',
-    description: 'Opportunity probability',
+    standardId: AGENT_STANDARD_FIELD_IDS.email,
+    type: FieldMetadataType.EMAIL,
+    label: 'Email',
+    description: 'Email',
     icon: 'IconProgressCheck',
-    defaultValue: "'0'",
   })
-  @WorkspaceIsDeprecated()
-  probability: string;
+  @WorkspaceIsNullable()
+  email: string;
 
   @WorkspaceRelation({
     standardId: AGENT_STANDARD_FIELD_IDS.assignedTasks,

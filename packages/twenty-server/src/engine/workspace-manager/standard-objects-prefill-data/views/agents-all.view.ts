@@ -27,7 +27,7 @@ export const agentsAllView = async (
       {
         fieldMetadataId:
           objectMetadataMap[STANDARD_OBJECT_IDS.agent].fields[
-            AGENT_STANDARD_FIELD_IDS.amount
+            AGENT_STANDARD_FIELD_IDS.country
           ],
         position: 1,
         isVisible: true,
@@ -36,9 +36,36 @@ export const agentsAllView = async (
       {
         fieldMetadataId:
           objectMetadataMap[STANDARD_OBJECT_IDS.agent].fields[
-            AGENT_STANDARD_FIELD_IDS.createdBy
+            AGENT_STANDARD_FIELD_IDS.city
           ],
         position: 2,
+        isVisible: true,
+        size: 150,
+      },
+      {
+        fieldMetadataId:
+          objectMetadataMap[STANDARD_OBJECT_IDS.agent].fields[
+            AGENT_STANDARD_FIELD_IDS.gender
+          ],
+        position: 3,
+        isVisible: true,
+        size: 150,
+      },
+      {
+        fieldMetadataId:
+          objectMetadataMap[STANDARD_OBJECT_IDS.agent].fields[
+            AGENT_STANDARD_FIELD_IDS.birthday
+          ],
+        position: 4,
+        isVisible: true,
+        size: 150,
+      },
+      {
+        fieldMetadataId:
+          objectMetadataMap[STANDARD_OBJECT_IDS.agent].fields[
+            AGENT_STANDARD_FIELD_IDS.email
+          ],
+        position: 5,
         isVisible: true,
         size: 150,
       },
