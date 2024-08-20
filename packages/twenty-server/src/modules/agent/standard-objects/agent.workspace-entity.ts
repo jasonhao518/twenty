@@ -35,6 +35,31 @@ export enum AgentGender {
   UNKNOWN = 'UNKNOWN',
 }
 
+export enum Language {
+  ENGLISH = 'ENGLISH',
+  CHINESE = 'CHINESE',
+  HINDI = 'HINDI',
+  SPANISH = 'SPANISH',
+  FRENCH = 'FRENCH',
+  ARABIC = 'ARABIC',
+  BENGALI = 'BENGALI',
+  PORTUGUESE = 'PORTUGUESE',
+  RUSSIAN = 'RUSSIAN',
+  INDONESIAN = 'INDONESIAN',
+  GERMAN = 'GERMAN',
+  JAPANESE = 'JAPANESE',
+  SWAHILI = 'SWAHILI',
+  MARATHI = 'MARATHI',
+  TELUGU = 'TELUGU',
+  TURKISH = 'TURKISH',
+  TAMIL = 'TAMIL',
+  VIETNAMESE = 'VIETNAMESE',
+  KOREAN = 'KOREAN',
+  ITALIAN = 'ITALIAN',
+  THAI = 'THAI',
+  POLISH = 'POLISH',
+}
+
 @WorkspaceEntity({
   standardId: STANDARD_OBJECT_IDS.agent,
   namePlural: 'agents',
@@ -105,6 +130,36 @@ export class AgentWorkspaceEntity extends BaseWorkspaceEntity {
   gender: AgentGender;
 
   @WorkspaceField({
+    standardId: AGENT_STANDARD_FIELD_IDS.language,
+    type: FieldMetadataType.SELECT,
+    label: 'Language',
+    description: 'agent language',
+    icon: 'IconUserCircle',
+    options: [
+      {
+        value: Language.ENGLISH,
+        label: 'English',
+        color: 'green',
+        position: 0,
+      },
+      {
+        value: Language.CHINESE,
+        label: 'Chinese',
+        color: 'orange',
+        position: 1,
+      },
+      {
+        value: Language.JAPANESE,
+        label: 'Japanese',
+        color: 'blue',
+        position: 2,
+      },
+    ],
+    defaultValue: `'${Language.ENGLISH}'`,
+  })
+  language: Language;
+
+  @WorkspaceField({
     standardId: AGENT_STANDARD_FIELD_IDS.birthday,
     type: FieldMetadataType.DATE,
     label: 'Birthday',
@@ -113,6 +168,16 @@ export class AgentWorkspaceEntity extends BaseWorkspaceEntity {
   })
   @WorkspaceIsNullable()
   birthday: Date | null;
+
+  @WorkspaceField({
+    standardId: AGENT_STANDARD_FIELD_IDS.url,
+    type: FieldMetadataType.LINK,
+    label: 'Url',
+    description: 'Url',
+    icon: 'IconCalendarEvent',
+  })
+  @WorkspaceIsNullable()
+  url: string;
 
   @WorkspaceField({
     standardId: AGENT_STANDARD_FIELD_IDS.closeDate,

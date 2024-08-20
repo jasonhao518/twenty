@@ -2,17 +2,17 @@ import { Logger } from '@nestjs/common';
 
 import { ObjectMetadataInterface } from 'src/engine/metadata-modules/field-metadata/interfaces/object-metadata.interface';
 
-import { WorkspaceDataSourceService } from 'src/engine/workspace-datasource/workspace-datasource.service';
-import { DataSourceService } from 'src/engine/metadata-modules/data-source/data-source.service';
-import { MessageQueueService } from 'src/engine/integrations/message-queue/services/message-queue.service';
-import { MessageQueue } from 'src/engine/integrations/message-queue/message-queue.constants';
 import {
   CallWebhookJob,
   CallWebhookJobData,
 } from 'src/engine/api/graphql/workspace-query-runner/jobs/call-webhook.job';
 import { InjectMessageQueue } from 'src/engine/integrations/message-queue/decorators/message-queue.decorator';
-import { Processor } from 'src/engine/integrations/message-queue/decorators/processor.decorator';
 import { Process } from 'src/engine/integrations/message-queue/decorators/process.decorator';
+import { Processor } from 'src/engine/integrations/message-queue/decorators/processor.decorator';
+import { MessageQueue } from 'src/engine/integrations/message-queue/message-queue.constants';
+import { MessageQueueService } from 'src/engine/integrations/message-queue/services/message-queue.service';
+import { DataSourceService } from 'src/engine/metadata-modules/data-source/data-source.service';
+import { WorkspaceDataSourceService } from 'src/engine/workspace-datasource/workspace-datasource.service';
 
 export enum CallWebhookJobsJobOperation {
   create = 'create',
@@ -56,8 +56,8 @@ export class CallWebhookJobsJob {
         `
             SELECT * FROM ${dataSourceMetadata.schema}."webhook" 
             WHERE operation LIKE '%${eventType}%' 
-            OR operation LIKE '%*.${nameSingular}%' 
-            OR operation LIKE '%${operation}.*%'
+            OR operation LIKE '%*.${operation}%' 
+            OR operation LIKE '%${nameSingular}.*%'
             OR operation LIKE '%*.*%'
           `,
       );
