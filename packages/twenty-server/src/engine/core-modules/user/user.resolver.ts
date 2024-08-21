@@ -33,7 +33,6 @@ import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorat
 import { DemoEnvGuard } from 'src/engine/guards/demo.env.guard';
 import { JwtAuthGuard } from 'src/engine/guards/jwt.auth.guard';
 import { EnvironmentService } from 'src/engine/integrations/environment/environment.service';
-import { LoadServiceWithWorkspaceContext } from 'src/engine/twenty-orm/context/load-service-with-workspace.context';
 import { streamToBuffer } from 'src/utils/stream-to-buffer';
 
 const getHMACKey = (email?: string, key?: string | null) => {
@@ -54,7 +53,6 @@ export class UserResolver {
     private readonly environmentService: EnvironmentService,
     private readonly fileUploadService: FileUploadService,
     private readonly onboardingService: OnboardingService,
-    private readonly loadServiceWithWorkspaceContext: LoadServiceWithWorkspaceContext,
     private readonly userVarService: UserVarsService,
     private readonly fileService: FileService,
   ) {}
@@ -100,6 +98,7 @@ export class UserResolver {
     nullable: true,
   })
   async workspaceMember(@Parent() user: User): Promise<WorkspaceMember | null> {
+    console.time('resolver workspaceMember');
     const workspaceMember = await this.userService.loadWorkspaceMember(user);
 
     if (workspaceMember && workspaceMember.avatarUrl) {
@@ -110,6 +109,7 @@ export class UserResolver {
 
       workspaceMember.avatarUrl = `${workspaceMember.avatarUrl}?token=${avatarUrlToken}`;
     }
+    console.timeEnd('resolver workspaceMember');
 
     // TODO: Fix typing disrepency between Entity and DTO
     return workspaceMember as WorkspaceMember | null;
@@ -119,6 +119,7 @@ export class UserResolver {
     nullable: true,
   })
   async workspaceMembers(@Parent() user: User): Promise<WorkspaceMember[]> {
+    console.time('resolver workspaceMembers');
     const workspaceMembers = await this.userService.loadWorkspaceMembers(
       user.defaultWorkspace,
     );
@@ -133,6 +134,8 @@ export class UserResolver {
         workspaceMember.avatarUrl = `${workspaceMember.avatarUrl}?token=${avatarUrlToken}`;
       }
     }
+
+    console.timeEnd('resolver workspaceMembers');
 
     // TODO: Fix typing disrepency between Entity and DTO
     return workspaceMembers as WorkspaceMember[];
@@ -189,11 +192,6 @@ export class UserResolver {
 
   @ResolveField(() => OnboardingStatus)
   async onboardingStatus(@Parent() user: User): Promise<OnboardingStatus> {
-    const contextInstance = await this.loadServiceWithWorkspaceContext.load(
-      this.onboardingService,
-      user.defaultWorkspaceId,
-    );
-
-    return contextInstance.getOnboardingStatus(user);
+    return this.onboardingService.getOnboardingStatus(user);
   }
 }
