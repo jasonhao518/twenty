@@ -93,6 +93,7 @@ export const ShowPageRightContainer = ({
   const isCompanyOrPerson = [
     CoreObjectNameSingular.Company,
     CoreObjectNameSingular.Person,
+    CoreObjectNameSingular.Agent,
   ].includes(targetObjectNameSingular);
 
   const shouldDisplayCalendarTab = isCompanyOrPerson;
@@ -117,6 +118,14 @@ export const ShowPageRightContainer = ({
       title: 'Fields',
       Icon: IconList,
       hide: !isMobile,
+    },
+    {
+      id: 'account',
+      title: 'Accounts',
+      Icon: IconNotes,
+      hide:
+        targetableObject.targetObjectNameSingular !==
+        CoreObjectNameSingular.Agent,
     },
     {
       id: 'timeline',
@@ -202,6 +211,8 @@ export const ShowPageRightContainer = ({
         return <EmailThreads targetableObject={targetableObject} />;
       case 'calendar':
         return <Calendar targetableObject={targetableObject} />;
+      case 'account':
+        return <ObjectTasks targetableObject={targetableObject} />;
       default:
         return <></>;
     }

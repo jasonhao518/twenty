@@ -16,6 +16,7 @@ import { capitalize } from '~/utils/string/capitalize';
 import { ObjectFieldRowWithoutRelation } from '@/settings/data-model/graph-overview/components/SettingsDataModelOverviewFieldWithoutRelation';
 import '@reactflow/node-resizer/dist/style.css';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 type SettingsDataModelOverviewObjectProps = NodeProps<ObjectMetadataItem>;
 
@@ -135,7 +136,7 @@ export const SettingsDataModelOverviewObject = ({
         {fields
           .filter((x) => x.type === FieldMetadataType.Relation)
           .map((field) => (
-            <StyledCardRow>
+            <StyledCardRow key={uuidv4()}>
               <ObjectFieldRow field={field} />
             </StyledCardRow>
           ))}

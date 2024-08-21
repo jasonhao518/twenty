@@ -56,8 +56,8 @@ export class CallWebhookJobsJob {
         `
             SELECT * FROM ${dataSourceMetadata.schema}."webhook" 
             WHERE operation LIKE '%${eventType}%' 
-            OR operation LIKE '%*.${nameSingular}%' 
-            OR operation LIKE '%${operation}.*%'
+            OR operation LIKE '%*.${operation}%' 
+            OR operation LIKE '%${nameSingular}.*%'
             OR operation LIKE '%*.*%'
           `,
       );

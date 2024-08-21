@@ -9,6 +9,8 @@ export const ACTIVITY_TARGET_STANDARD_FIELD_IDS = {
   activity: '20202020-ca58-478c-a4f5-ae825671c30e',
   person: '20202020-4afd-4ae7-99c2-de57d795a93f',
   company: '20202020-7cc0-44a1-8068-f11171fdd02e',
+  account: '20202020-7cc0-44a1-8068-f11171fdd02f',
+  agent: '20202020-1cc0-44a1-8068-f11171fdd02f',
   opportunity: '20202020-1fc2-4af1-8c91-7901ee0fd38b',
   workflow: '20202020-a63d-40d0-b24d-ddcc1347d583',
   custom: '20202020-7f21-442f-94be-32462281b1ca',
@@ -36,6 +38,8 @@ export const API_KEY_STANDARD_FIELD_IDS = {
 
 export const ATTACHMENT_STANDARD_FIELD_IDS = {
   name: '20202020-87a5-48f8-bbf7-ade388825a57',
+  account: '20202020-87a5-48f8-bbf7-ade388825a58',
+  agent: '20202020-17a5-48f8-bbf7-ade388825a58',
   fullPath: '20202020-0d19-453d-8e8d-fbcda8ca3747',
   type: '20202020-a417-49b8-a40b-f6a7874caa0d',
   author: '20202020-6501-4ac5-a4ef-b2f8522ef6cd',
@@ -181,6 +185,8 @@ export const BEHAVIORAL_EVENT_STANDARD_FIELD_IDS = {
 
 export const TIMELINE_ACTIVITY_STANDARD_FIELD_IDS = {
   happensAt: '20202020-9526-4993-b339-c4318c4d39f0',
+  account: '20202020-9526-4993-b339-c4318c4d39f2',
+  agent: '20202020-1526-4993-b339-c4318c4d39f2',
   type: '20202020-5e7b-4ccd-8b8a-86b94b474134',
   name: '20202020-7207-46e8-9dab-849505ae8497',
   properties: '20202020-f142-4b04-b91b-6a2b4af3bf11',
@@ -281,6 +287,8 @@ export const NOTE_STANDARD_FIELD_IDS = {
 export const NOTE_TARGET_STANDARD_FIELD_IDS = {
   note: '20202020-57f3-4f50-9599-fc0f671df003',
   person: '20202020-38ca-4aab-92f5-8a605ca2e4c5',
+  account: '20202020-38ca-4aab-92f5-8a605ca2e4c4',
+  agent: '20202020-18ca-4aab-92f5-8a605ca2e4c4',
   company: 'c500fbc0-d6f2-4982-a959-5a755431696c',
   opportunity: '20202020-4e42-417a-a705-76581c9ade79',
   custom: '20202020-3d12-4579-94ee-7117c1bad492',
@@ -303,6 +311,46 @@ export const OPPORTUNITY_STANDARD_FIELD_IDS = {
   noteTargets: '20202020-dd3f-42d5-a382-db58aabf43d3',
   attachments: '20202020-87c7-4118-83d6-2f4031005209',
   timelineActivities: '20202020-30e2-421f-96c7-19c69d1cf631',
+};
+
+export const ACCOUNT_STANDARD_FIELD_IDS = {
+  name: '20202020-8609-4f65-a2d9-44009eb422b1',
+  amount: '20202020-583e-4642-8533-db761d5fa821',
+  closeDate: '20202020-527e-44d6-b1ac-c4158d307b91',
+  probabilityDeprecated: '20202020-69d4-45f3-9703-690b09fafcf1',
+  stage: '20202020-6f76-477d-8551-28cd65b2b4b1',
+  position: '20202020-806d-493a-bbc6-6313e62958e1',
+  createdBy: '20202020-a63e-4a62-8e63-42a51828f832',
+  pointOfContact: '20202020-8dfb-42fc-92b6-01afb759ed11',
+  company: '20202020-cbac-457e-b565-adece5fc8151',
+  favorites: '20202020-a1c2-4500-aaae-83ba8a0e8271',
+  activityTargets: '20202020-220a-42d6-8261-b2102d6eab31',
+  taskTargets: '20202020-59c0-4179-a208-4a255f04a5b1',
+  noteTargets: '20202020-dd3f-42d5-a382-db58aabf43d1',
+  attachments: '20202020-87c7-4118-83d6-2f4031005201',
+  timelineActivities: '20202020-30e2-421f-96c7-19c69d1cf632',
+};
+
+export const AGENT_STANDARD_FIELD_IDS = {
+  assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbeb',
+  name: '20202020-8609-1f65-a2d9-44009eb422b1',
+  country: '20202020-583e-1642-8533-db761d5fa821',
+  closeDate: '20202020-127e-44d6-b1ac-c4158d307b91',
+  birthday: '20202020-927e-44d6-b1ac-c4158d307b91',
+  gender: '20202020-827e-44d6-b1ac-c4158d307b91',
+  email: '20202020-19d4-45f3-9703-690b09fafcf1',
+  url: '20202020-99d4-45f3-9703-693b09fafcf8',
+  stage: '20202020-1f76-477d-8551-28cd65b2b4b1',
+  position: '20202020-106d-493a-bbc6-6313e62958e1',
+  createdBy: '20202020-163e-4a62-8e63-42a51828f832',
+  city: '20202020-1dfb-42fc-92b6-01afb759ed11',
+  language: '20202020-1bac-457e-b365-adece5fc8153',
+  favorites: '20202020-11c2-4500-aaae-83ba8a0e8271',
+  activityTargets: '20202020-120a-42d6-8261-b2102d6eab31',
+  taskTargets: '20202020-19c0-4179-a208-4a255f04a5b1',
+  noteTargets: '20202020-1d3f-42d5-a382-db58aabf43d1',
+  attachments: '20202020-17c7-4118-83d6-2f4031005201',
+  timelineActivities: '20202020-10e2-421f-96c7-19c69d1cf632',
 };
 
 export const PERSON_STANDARD_FIELD_IDS = {
@@ -345,6 +393,8 @@ export const TASK_STANDARD_FIELD_IDS = {
 export const TASK_TARGET_STANDARD_FIELD_IDS = {
   task: '20202020-e881-457a-8758-74aaef4ae78a',
   person: '20202020-c8a0-4e85-a016-87e2349cfbec',
+  account: '20202020-c8a0-4e85-a016-87e2349cfbed',
+  agent: '20202020-18a0-4e85-a016-87e2349cfbed',
   company: '20202020-4703-4a4e-948c-487b0c60a92c',
   opportunity: '20202020-6cb2-4c01-a9a5-aca3dbc11d41',
   custom: '20202020-41c1-4c9a-8c75-be0971ef89af',
@@ -436,7 +486,6 @@ export const WORKSPACE_MEMBER_STANDARD_FIELD_IDS = {
   userId: '20202020-75a9-4dfc-bf25-2e4b43e89820',
   authoredActivities: '20202020-f139-4f13-a82f-a65a8d290a74',
   assignedActivities: '20202020-5c97-42b6-8ca9-c07622cbb33f',
-  assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbeb',
   favorites: '20202020-f3c1-4faf-b343-cf7681038757',
   accountOwnerForCompanies: '20202020-dc29-4bd4-a3c1-29eafa324bee',
   authoredAttachments: '20202020-000f-4947-917f-1b09851024fe',

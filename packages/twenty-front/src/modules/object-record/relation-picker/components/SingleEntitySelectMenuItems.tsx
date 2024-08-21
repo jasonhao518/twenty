@@ -17,6 +17,7 @@ import { MenuItemSelect } from '@/ui/navigation/menu-item/components/MenuItemSel
 import { useScopedHotkeys } from '@/ui/utilities/hotkey/hooks/useScopedHotkeys';
 import { isDefined } from '~/utils/isDefined';
 
+import { v4 as uuidv4 } from 'uuid';
 import { EntityForSelect } from '../types/EntityForSelect';
 import { RelationPickerHotkeyScope } from '../types/RelationPickerHotkeyScope';
 
@@ -157,7 +158,7 @@ export const SingleEntitySelectMenuItems = ({
               switch (entity.id) {
                 case 'add-new': {
                   return (
-                    <>
+                    <div key={uuidv4()}>
                       {entitiesToSelect.length > 0 && <DropdownMenuSeparator />}
                       <CreateNewButton
                         key={entity.id}
@@ -166,7 +167,7 @@ export const SingleEntitySelectMenuItems = ({
                         text="Add New"
                         hovered={isSelectedAddNewButton}
                       />
-                    </>
+                    </div>
                   );
                 }
                 case 'select-none': {
