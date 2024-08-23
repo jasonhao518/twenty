@@ -119,7 +119,7 @@ export class AccountWorkspaceEntity extends BaseWorkspaceEntity {
   createdBy: ActorMetadata;
 
   @WorkspaceRelation({
-    standardId: OPPORTUNITY_STANDARD_FIELD_IDS.activityTargets,
+    standardId: ACCOUNT_STANDARD_FIELD_IDS.activityTargets,
     type: RelationMetadataType.ONE_TO_MANY,
     label: 'Activities',
     description: 'Activities tied to the opportunity',
@@ -132,7 +132,7 @@ export class AccountWorkspaceEntity extends BaseWorkspaceEntity {
   activityTargets: Relation<ActivityTargetWorkspaceEntity[]>;
 
   @WorkspaceRelation({
-    standardId: OPPORTUNITY_STANDARD_FIELD_IDS.taskTargets,
+    standardId: ACCOUNT_STANDARD_FIELD_IDS.taskTargets,
     type: RelationMetadataType.ONE_TO_MANY,
     label: 'Tasks',
     description: 'Tasks tied to the opportunity',

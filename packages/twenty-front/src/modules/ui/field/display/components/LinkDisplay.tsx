@@ -21,7 +21,9 @@ export const LinkDisplay = ({ value }: LinkDisplayProps) => {
   const absoluteUrl = url
     ? url.startsWith('http')
       ? url
-      : 'https://' + url
+      : url.startsWith('myapp')
+        ? url
+        : 'https://' + url
     : '';
 
   const displayedValue = isNonEmptyString(value?.label)
