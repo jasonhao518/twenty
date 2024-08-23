@@ -10,6 +10,7 @@ import {
   IconTimelineEvent,
 } from 'twenty-ui';
 
+import { ObjectAccounts } from '@/activities/accounts/components/ObjectAccounts';
 import { Calendar } from '@/activities/calendar/components/Calendar';
 import { EmailThreads } from '@/activities/emails/components/EmailThreads';
 import { Attachments } from '@/activities/files/components/Attachments';
@@ -212,7 +213,7 @@ export const ShowPageRightContainer = ({
       case 'calendar':
         return <Calendar targetableObject={targetableObject} />;
       case 'account':
-        return <ObjectTasks targetableObject={targetableObject} />;
+        return <ObjectAccounts targetableObject={targetableObject} />;
       default:
         return <></>;
     }
