@@ -1,5 +1,5 @@
-import { MouseEvent } from 'react';
 import styled from '@emotion/styled';
+import { MouseEvent } from 'react';
 
 import { RoundedLink } from '@/ui/navigation/link/components/RoundedLink';
 import {
@@ -32,7 +32,9 @@ export const URLDisplay = ({ value }: URLDisplayProps) => {
   const absoluteUrl = value
     ? value.startsWith('http')
       ? value
-      : 'https://' + value
+      : value.startsWith('myapp')
+        ? value
+        : 'https://' + value
     : '';
 
   const displayedValue = value ?? '';
