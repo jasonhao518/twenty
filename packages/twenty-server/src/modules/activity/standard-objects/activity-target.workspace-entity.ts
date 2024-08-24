@@ -13,6 +13,7 @@ import { WorkspaceJoinColumn } from 'src/engine/twenty-orm/decorators/workspace-
 import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-relation.decorator';
 import { ACTIVITY_TARGET_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
+import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
 import { ActivityWorkspaceEntity } from 'src/modules/activity/standard-objects/activity.workspace-entity';
 import { CompanyWorkspaceEntity } from 'src/modules/company/standard-objects/company.workspace-entity';
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
@@ -88,6 +89,21 @@ export class ActivityTargetWorkspaceEntity extends BaseWorkspaceEntity {
 
   @WorkspaceJoinColumn('opportunity')
   opportunityId: string | null;
+
+  @WorkspaceRelation({
+    standardId: ACTIVITY_TARGET_STANDARD_FIELD_IDS.account,
+    type: RelationMetadataType.MANY_TO_ONE,
+    label: 'Account',
+    description: 'ActivityTarget opportunity',
+    icon: 'IconTargetArrow',
+    inverseSideTarget: () => OpportunityWorkspaceEntity,
+    inverseSideFieldKey: 'activityTargets',
+  })
+  @WorkspaceIsNullable()
+  account: Relation<AccountWorkspaceEntity> | null;
+
+  @WorkspaceJoinColumn('account')
+  accountId: string | null;
 
   @WorkspaceRelation({
     standardId: ACTIVITY_TARGET_STANDARD_FIELD_IDS.workflow,
