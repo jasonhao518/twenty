@@ -12,7 +12,7 @@ export const RecordTableCellsVisible = () => {
   const { visibleTableColumnsSelector } = useRecordTableStates();
 
   const visibleTableColumns = useRecoilValue(visibleTableColumnsSelector());
-
+  console.log(visibleTableColumns);
   const tableColumnsAfterFirst = visibleTableColumns.slice(1);
 
   return (

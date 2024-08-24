@@ -55,7 +55,6 @@ export const RecordTableCellWrapper = ({
   const hasSoftFocus = useRecoilValue(
     isSoftFocusOnTableCellFamilyState(currentTableCellPosition),
   );
-
   return (
     <RecordTableCellContext.Provider
       value={{
