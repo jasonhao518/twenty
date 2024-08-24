@@ -1,4 +1,3 @@
-import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
 import { AgentWorkspaceEntity } from 'src/modules/agent/standard-objects/agent.workspace-entity';
 
 import { ActivityTargetWorkspaceEntity } from 'src/modules/activity/standard-objects/activity-target.workspace-entity';
@@ -79,7 +78,6 @@ export const standardObjectMetadataDefinitions = [
   NoteWorkspaceEntity,
   NoteTargetWorkspaceEntity,
   AgentWorkspaceEntity,
-  AccountWorkspaceEntity,
   PersonWorkspaceEntity,
   TaskWorkspaceEntity,
   TaskTargetWorkspaceEntity,

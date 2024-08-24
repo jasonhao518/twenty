@@ -4,7 +4,6 @@ import { v4 } from 'uuid';
 import { FeatureFlagKey } from 'src/engine/core-modules/feature-flag/enums/feature-flag-key.enum';
 import { FeatureFlagEntity } from 'src/engine/core-modules/feature-flag/feature-flag.entity';
 import { ObjectMetadataEntity } from 'src/engine/metadata-modules/object-metadata/object-metadata.entity';
-import { accountsAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/accounts-all.view';
 import { agentsAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/agents-all.view';
 
 import { activitiesAllView } from 'src/engine/workspace-manager/standard-objects-prefill-data/views/activities-all.view';
@@ -36,7 +35,6 @@ export const viewPrefillData = async (
     await activitiesAllView(objectMetadataMap),
     await notesAllView(objectMetadataMap),
     await tasksAllView(objectMetadataMap),
-    await accountsAllView(objectMetadataMap),
     await agentsAllView(objectMetadataMap),
         
     await tasksByStatusView(objectMetadataMap),

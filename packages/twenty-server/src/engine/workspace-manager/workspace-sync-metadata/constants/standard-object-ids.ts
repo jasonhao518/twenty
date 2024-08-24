@@ -30,7 +30,6 @@ export const STANDARD_OBJECT_IDS = {
   note: '20202020-0b00-45cd-b6f6-6cd806fc6804',
   noteTarget: '20202020-fff0-4b44-be82-bda313884400',
   opportunity: '20202020-9549-49dd-b2b2-883999db8938',
-  account: '20202020-9549-49dd-b2b2-883999db8939',
   agent: '20202020-1549-49dd-b2b2-883999db8939',
   person: '20202020-e674-48e5-a542-72570eee7213',
   task: '20202020-1ba1-48ba-bc83-ef7e5990ed10',
