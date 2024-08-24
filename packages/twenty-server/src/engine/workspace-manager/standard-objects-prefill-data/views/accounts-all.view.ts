@@ -24,48 +24,13 @@ export const accountsAllView = async (
         isVisible: true,
         size: 150,
       },
-      {
-        fieldMetadataId:
-          objectMetadataMap[STANDARD_OBJECT_IDS.account].fields[
-            ACCOUNT_STANDARD_FIELD_IDS.country
-          ],
-        position: 1,
-        isVisible: true,
-        size: 150,
-      },
-      {
-        fieldMetadataId:
-          objectMetadataMap[STANDARD_OBJECT_IDS.account].fields[
-            ACCOUNT_STANDARD_FIELD_IDS.city
-          ],
-        position: 2,
-        isVisible: true,
-        size: 150,
-      },
-      {
-        fieldMetadataId:
-          objectMetadataMap[STANDARD_OBJECT_IDS.account].fields[
-            ACCOUNT_STANDARD_FIELD_IDS.gender
-          ],
-        position: 3,
-        isVisible: true,
-        size: 150,
-      },
-      {
-        fieldMetadataId:
-          objectMetadataMap[STANDARD_OBJECT_IDS.account].fields[
-            ACCOUNT_STANDARD_FIELD_IDS.birthday
-          ],
-        position: 4,
-        isVisible: true,
-        size: 150,
-      },
+
       {
         fieldMetadataId:
           objectMetadataMap[STANDARD_OBJECT_IDS.account].fields[
             ACCOUNT_STANDARD_FIELD_IDS.email
           ],
-        position: 5,
+        position: 1,
         isVisible: true,
         size: 150,
       },

@@ -20,6 +20,7 @@ import { WorkspaceJoinColumn } from 'src/engine/twenty-orm/decorators/workspace-
 import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-relation.decorator';
 import { PERSON_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
+import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
 import { ActivityTargetWorkspaceEntity } from 'src/modules/activity/standard-objects/activity-target.workspace-entity';
 import { AttachmentWorkspaceEntity } from 'src/modules/attachment/standard-objects/attachment.workspace-entity';
 import { CalendarEventParticipantWorkspaceEntity } from 'src/modules/calendar/common/standard-objects/calendar-event-participant.workspace-entity';
@@ -30,6 +31,36 @@ import { NoteTargetWorkspaceEntity } from 'src/modules/note/standard-objects/not
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
 import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-objects/timeline-activity.workspace-entity';
+export enum AgentGender {
+  FEMALE = 'FEMALE',
+  MALE = 'MALE',
+  UNKNOWN = 'UNKNOWN',
+}
+
+export enum Language {
+  ENGLISH = 'ENGLISH',
+  CHINESE = 'CHINESE',
+  HINDI = 'HINDI',
+  SPANISH = 'SPANISH',
+  FRENCH = 'FRENCH',
+  ARABIC = 'ARABIC',
+  BENGALI = 'BENGALI',
+  PORTUGUESE = 'PORTUGUESE',
+  RUSSIAN = 'RUSSIAN',
+  INDONESIAN = 'INDONESIAN',
+  GERMAN = 'GERMAN',
+  JAPANESE = 'JAPANESE',
+  SWAHILI = 'SWAHILI',
+  MARATHI = 'MARATHI',
+  TELUGU = 'TELUGU',
+  TURKISH = 'TURKISH',
+  TAMIL = 'TAMIL',
+  VIETNAMESE = 'VIETNAMESE',
+  KOREAN = 'KOREAN',
+  ITALIAN = 'ITALIAN',
+  THAI = 'THAI',
+  POLISH = 'POLISH',
+}
 
 @WorkspaceEntity({
   standardId: STANDARD_OBJECT_IDS.person,
@@ -268,4 +299,97 @@ export class PersonWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceIsNullable()
   @WorkspaceIsSystem()
   timelineActivities: Relation<TimelineActivityWorkspaceEntity[]>;
+
+  @WorkspaceField({
+    standardId: PERSON_STANDARD_FIELD_IDS.country,
+    type: FieldMetadataType.TEXT,
+    label: 'country',
+    description: 'Contact’s country',
+    icon: 'IconMap',
+  })
+  country: string;
+
+  @WorkspaceField({
+    standardId: PERSON_STANDARD_FIELD_IDS.gender,
+    type: FieldMetadataType.SELECT,
+    label: 'Gender',
+    description:
+      'Automatically create records for people you participated with in an event.',
+    icon: 'IconUserCircle',
+    options: [
+      {
+        value: AgentGender.MALE,
+        label: 'Male',
+        color: 'green',
+        position: 0,
+      },
+      {
+        value: AgentGender.FEMALE,
+        label: 'Female',
+        color: 'orange',
+        position: 1,
+      },
+      {
+        value: AgentGender.UNKNOWN,
+        label: 'Unknown',
+        color: 'blue',
+        position: 2,
+      },
+    ],
+    defaultValue: `'${AgentGender.UNKNOWN}'`,
+  })
+  gender: AgentGender;
+
+  @WorkspaceField({
+    standardId: PERSON_STANDARD_FIELD_IDS.language,
+    type: FieldMetadataType.SELECT,
+    label: 'Language',
+    description: 'agent language',
+    icon: 'IconUserCircle',
+    options: [
+      {
+        value: Language.ENGLISH,
+        label: 'English',
+        color: 'green',
+        position: 0,
+      },
+      {
+        value: Language.CHINESE,
+        label: 'Chinese',
+        color: 'orange',
+        position: 1,
+      },
+      {
+        value: Language.JAPANESE,
+        label: 'Japanese',
+        color: 'blue',
+        position: 2,
+      },
+    ],
+    defaultValue: `'${Language.ENGLISH}'`,
+  })
+  language: Language;
+
+  @WorkspaceField({
+    standardId: PERSON_STANDARD_FIELD_IDS.birthday,
+    type: FieldMetadataType.DATE,
+    label: 'Birthday',
+    description: 'Opportunity birthday',
+    icon: 'IconCalendarEvent',
+  })
+  @WorkspaceIsNullable()
+  birthday: Date | null;
+
+  @WorkspaceRelation({
+    standardId: PERSON_STANDARD_FIELD_IDS.accounts,
+    type: RelationMetadataType.ONE_TO_MANY,
+    label: 'Accounts',
+    description: 'Accounts linked to the person',
+    icon: 'IconTimelineEvent',
+    inverseSideTarget: () => AccountWorkspaceEntity,
+    onDelete: RelationOnDeleteAction.CASCADE,
+  })
+  @WorkspaceIsNullable()
+  @WorkspaceIsSystem()
+  accounts: Relation<AccountWorkspaceEntity[]>;
 }

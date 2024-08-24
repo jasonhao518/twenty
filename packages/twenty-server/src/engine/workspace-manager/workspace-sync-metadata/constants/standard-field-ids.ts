@@ -312,17 +312,14 @@ export const OPPORTUNITY_STANDARD_FIELD_IDS = {
 export const ACCOUNT_STANDARD_FIELD_IDS = {
   assignedTasks: '20202020-61dc-4a1c-99e8-38ebf8d2bbe1',
   name: '20202020-8609-1f65-a2d9-44009eb422b1',
-  country: '20202020-583e-1642-8533-db761d5fa821',
   closeDate: '20202020-127e-44d6-b1ac-c4158d307b91',
-  birthday: '20202020-927e-44d6-b1ac-c4158d307b91',
-  gender: '20202020-827e-44d6-b1ac-c4158d307b91',
   email: '20202020-19d4-45f3-9703-690b09fafcf1',
-  url: '20202020-99d4-45f3-9703-693b09fafcf8',
+  person: '20202020-29d4-45f3-9703-690b09fafcf1',
   stage: '20202020-1f76-477d-8551-28cd65b2b4b1',
   position: '20202020-106d-493a-bbc6-6313e62958e1',
   createdBy: '20202020-163e-4a62-8e63-42a51828f832',
   city: '20202020-1dfb-42fc-92b6-01afb759ed11',
-  language: '20202020-1bac-457e-b365-adece5fc8153',
+
   favorites: '20202020-11c2-4500-aaae-83ba8a0e8271',
   activityTargets: '20202020-120a-42d6-8261-b2102d6eab31',
   taskTargets: '20202020-19c0-4179-a208-4a255f04a5b1',
@@ -333,6 +330,11 @@ export const ACCOUNT_STANDARD_FIELD_IDS = {
 
 export const PERSON_STANDARD_FIELD_IDS = {
   name: '20202020-3875-44d5-8c33-a6239011cab8',
+  language: '20202020-1bac-457e-b365-adece5fc8153',
+  accounts: '20202020-1bac-457e-b365-bdece5fc8153',
+  country: '20202020-583e-1642-8533-db761d5fa821',
+  birthday: '20202020-927e-44d6-b1ac-c4158d307b91',
+  gender: '20202020-827e-44d6-b1ac-c4158d307b91',
   email: '20202020-a740-42bb-8849-8980fb3f12e1',
   linkedinLink: '20202020-f1af-48f7-893b-2007a73dd508',
   xLink: '20202020-8fc2-487c-b84a-55a99b145cfd',
