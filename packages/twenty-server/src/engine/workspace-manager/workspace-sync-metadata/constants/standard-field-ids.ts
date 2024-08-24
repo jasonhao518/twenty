@@ -315,7 +315,7 @@ export const OPPORTUNITY_STANDARD_FIELD_IDS = {
 
 export const ACCOUNT_STANDARD_FIELD_IDS = {
   name: '20202020-8609-4f65-a2d9-44009eb422b1',
-  amount: '20202020-583e-4642-8533-db761d5fa821',
+  url: '20202020-583e-4642-8533-db761d5fa821',
   closeDate: '20202020-527e-44d6-b1ac-c4158d307b91',
   probabilityDeprecated: '20202020-69d4-45f3-9703-690b09fafcf1',
   stage: '20202020-6f76-477d-8551-28cd65b2b4b1',

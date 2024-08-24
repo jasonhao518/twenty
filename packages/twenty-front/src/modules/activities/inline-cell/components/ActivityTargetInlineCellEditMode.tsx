@@ -6,6 +6,7 @@ import { v4 } from 'uuid';
 import { useUpsertActivity } from '@/activities/hooks/useUpsertActivity';
 import { ActivityTargetObjectRecordEffect } from '@/activities/inline-cell/components/ActivityTargetObjectRecordEffect';
 import { isActivityInCreateModeState } from '@/activities/states/isActivityInCreateModeState';
+import { Account } from '@/activities/types/Account';
 import { ActivityTargetWithTargetRecord } from '@/activities/types/ActivityTargetObject';
 import { Note } from '@/activities/types/Note';
 import { NoteTarget } from '@/activities/types/NoteTarget';
@@ -38,7 +39,7 @@ const StyledSelectContainer = styled.div`
 `;
 
 type ActivityTargetInlineCellEditModeProps = {
-  activity: Task | Note;
+  activity: Task | Note | Account;
   activityTargetWithTargetRecords: ActivityTargetWithTargetRecord[];
   activityObjectNameSingular:
     | CoreObjectNameSingular.Note

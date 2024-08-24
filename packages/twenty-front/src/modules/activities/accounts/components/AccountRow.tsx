@@ -9,7 +9,7 @@ import { Checkbox, CheckboxShape } from '@/ui/input/components/Checkbox';
 import { beautifyExactDate, hasDatePassed } from '~/utils/date-utils';
 
 import { useCompleteAccount } from '@/activities/accounts/hooks/useCompleteAccount';
-import { Task } from '@/activities/types/Task';
+import { Account } from '@/activities/types/Account';
 import { CoreObjectNameSingular } from '@/object-metadata/types/CoreObjectNameSingular';
 import { useFieldContext } from '@/object-record/hooks/useFieldContext';
 
@@ -80,13 +80,13 @@ const StyledCheckboxContainer = styled.div`
   display: flex;
 `;
 
-export const AccountRow = ({ task }: { task: Task }) => {
+export const AccountRow = ({ task }: { task: Account }) => {
   const theme = useTheme();
   const openActivityRightDrawer = useOpenActivityRightDrawer({
-    objectNameSingular: CoreObjectNameSingular.Task,
+    objectNameSingular: CoreObjectNameSingular.Account,
   });
 
-  const body = getActivitySummary(task.body);
+  const body = getActivitySummary(task.name);
   const { completeTask } = useCompleteAccount(task);
 
   const { FieldContextProvider: TaskTargetsContextProvider } = useFieldContext({

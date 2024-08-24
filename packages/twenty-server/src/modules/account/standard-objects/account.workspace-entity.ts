@@ -4,7 +4,6 @@ import {
   ActorMetadata,
   FieldActorSource,
 } from 'src/engine/metadata-modules/field-metadata/composite-types/actor.composite-type';
-import { CurrencyMetadata } from 'src/engine/metadata-modules/field-metadata/composite-types/currency.composite-type';
 import { FieldMetadataType } from 'src/engine/metadata-modules/field-metadata/field-metadata.entity';
 import {
   RelationMetadataType,
@@ -52,14 +51,14 @@ export class AccountWorkspaceEntity extends BaseWorkspaceEntity {
   name: string;
 
   @WorkspaceField({
-    standardId: ACCOUNT_STANDARD_FIELD_IDS.amount,
-    type: FieldMetadataType.CURRENCY,
-    label: 'Amount',
-    description: 'Opportunity amount',
+    standardId: ACCOUNT_STANDARD_FIELD_IDS.url,
+    type: FieldMetadataType.LINK,
+    label: 'Url',
+    description: 'url',
     icon: 'IconCurrencyDollar',
   })
   @WorkspaceIsNullable()
-  amount: CurrencyMetadata | null;
+  url: string | null;
 
   @WorkspaceField({
     standardId: ACCOUNT_STANDARD_FIELD_IDS.closeDate,

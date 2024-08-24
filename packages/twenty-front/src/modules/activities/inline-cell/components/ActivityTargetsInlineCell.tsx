@@ -5,6 +5,7 @@ import { IconArrowUpRight, IconPencil } from 'twenty-ui';
 import { ActivityTargetChips } from '@/activities/components/ActivityTargetChips';
 import { useActivityTargetObjectRecords } from '@/activities/hooks/useActivityTargetObjectRecords';
 import { ActivityTargetInlineCellEditMode } from '@/activities/inline-cell/components/ActivityTargetInlineCellEditMode';
+import { Account } from '@/activities/types/Account';
 import { ActivityEditorHotkeyScope } from '@/activities/types/ActivityEditorHotkeyScope';
 import { Note } from '@/activities/types/Note';
 import { Task } from '@/activities/types/Task';
@@ -19,7 +20,7 @@ import { useInlineCell } from '@/object-record/record-inline-cell/hooks/useInlin
 import { useScopedHotkeys } from '@/ui/utilities/hotkey/hooks/useScopedHotkeys';
 
 type ActivityTargetsInlineCellProps = {
-  activity: Task | Note;
+  activity: Task | Note | Account;
   showLabel?: boolean;
   maxWidth?: number;
   readonly?: boolean;

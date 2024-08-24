@@ -27,7 +27,7 @@ export const accountsAllView = async (
       {
         fieldMetadataId:
           objectMetadataMap[STANDARD_OBJECT_IDS.account].fields[
-            ACCOUNT_STANDARD_FIELD_IDS.amount
+            ACCOUNT_STANDARD_FIELD_IDS.url
           ],
         position: 1,
         isVisible: true,

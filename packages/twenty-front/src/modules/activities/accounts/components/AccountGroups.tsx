@@ -19,9 +19,7 @@ import { AddAccountButton } from '@/activities/accounts/components/AddAccountBut
 import { ACCOUNTS_TAB_LIST_COMPONENT_ID } from '@/activities/accounts/constants/AccountsTabListComponentId';
 import { useAccounts } from '@/activities/accounts/hooks/useAccounts';
 import { useOpenCreateAccountDrawer } from '@/activities/hooks/useOpenCreateAccountDrawer';
-import { Task } from '@/activities/types/Task';
 import { CoreObjectNameSingular } from '@/object-metadata/types/CoreObjectNameSingular';
-import groupBy from 'lodash.groupby';
 import { AccountList } from './AccountList';
 
 const StyledContainer = styled.div`
@@ -93,22 +91,15 @@ export const AccountGroups = ({
 
   return (
     <StyledContainer>
-      {Object.entries(groupBy(accounts, ({ status }) => status)).map(
-        ([status, tasksByStatus]: [string, Task[]]) => (
-          <AccountList
-            key={status}
-            title={status}
-            accounts={tasksByStatus}
-            button={
-              showAddButton && (
-                <AddAccountButton
-                  activityTargetableObjects={targetableObjects}
-                />
-              )
-            }
-          />
-        ),
-      )}
+      <AccountList
+        title={'count'}
+        accounts={accounts}
+        button={
+          showAddButton && (
+            <AddAccountButton activityTargetableObjects={targetableObjects} />
+          )
+        }
+      />
     </StyledContainer>
   );
 };

@@ -5,6 +5,7 @@ import { useRefreshShowPageFindManyActivitiesQueries } from '@/activities/hooks/
 import { isActivityInCreateModeState } from '@/activities/states/isActivityInCreateModeState';
 import { isUpsertingActivityInDBState } from '@/activities/states/isCreatingActivityInDBState';
 import { objectShowPageTargetableObjectState } from '@/activities/timelineActivities/states/objectShowPageTargetableObjectIdState';
+import { Account } from '@/activities/types/Account';
 import { Note } from '@/activities/types/Note';
 import { Task } from '@/activities/types/Task';
 import { CoreObjectNameSingular } from '@/object-metadata/types/CoreObjectNameSingular';
@@ -16,6 +17,7 @@ export const useUpsertActivity = ({
 }: {
   activityObjectNameSingular:
     | CoreObjectNameSingular.Task
+    | CoreObjectNameSingular.Account
     | CoreObjectNameSingular.Note;
 }) => {
   const [isActivityInCreateMode] = useRecoilState(isActivityInCreateModeState);
@@ -47,12 +49,12 @@ export const useUpsertActivity = ({
     activity,
     input,
   }: {
-    activity: Task | Note;
-    input: Partial<Task | Note>;
+    activity: Task | Note | Account;
+    input: Partial<Task | Note | Account>;
   }) => {
     setIsUpsertingActivityInDB(true);
     if (isActivityInCreateMode) {
-      const activityToCreate: Partial<Task | Note> = {
+      const activityToCreate: Partial<Task | Note | Account> = {
         ...activity,
         ...input,
       };

@@ -23,6 +23,7 @@ export const useCreateActivityInDB = ({
 }: {
   activityObjectNameSingular:
     | CoreObjectNameSingular.Task
+    | CoreObjectNameSingular.Account
     | CoreObjectNameSingular.Note;
 }) => {
   const createOneActivityOperationSignature =
