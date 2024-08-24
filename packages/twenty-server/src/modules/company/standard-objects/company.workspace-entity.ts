@@ -42,6 +42,7 @@ import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/sta
   labelIdentifierStandardId: COMPANY_STANDARD_FIELD_IDS.name,
   softDelete: true,
 })
+@WorkspaceIsSystem()
 export class CompanyWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: COMPANY_STANDARD_FIELD_IDS.name,

@@ -42,6 +42,7 @@ import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-o
   imageIdentifierStandardId: PERSON_STANDARD_FIELD_IDS.avatarUrl,
   softDelete: true,
 })
+@WorkspaceIsSystem()
 export class PersonWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: PERSON_STANDARD_FIELD_IDS.name,
