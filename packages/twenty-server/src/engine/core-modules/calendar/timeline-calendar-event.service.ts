@@ -8,7 +8,6 @@ import { TimelineCalendarEventsWithTotal } from 'src/engine/core-modules/calenda
 import { TwentyORMManager } from 'src/engine/twenty-orm/twenty-orm.manager';
 import { CalendarChannelVisibility } from 'src/modules/calendar/common/standard-objects/calendar-channel.workspace-entity';
 import { CalendarEventWorkspaceEntity } from 'src/modules/calendar/common/standard-objects/calendar-event.workspace-entity';
-import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 
 @Injectable()
 export class TimelineCalendarEventService {
@@ -130,35 +129,9 @@ export class TimelineCalendarEventService {
     page = 1,
     pageSize: number = TIMELINE_CALENDAR_EVENTS_DEFAULT_PAGE_SIZE,
   ): Promise<TimelineCalendarEventsWithTotal> {
-    const personRepository =
-      await this.twentyORMManager.getRepository<PersonWorkspaceEntity>(
-        'person',
-      );
-
-    const personIds = await personRepository.find({
-      where: {
-        companyId,
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    if (personIds.length <= 0) {
-      return {
-        totalNumberOfCalendarEvents: 0,
-        timelineCalendarEvents: [],
-      };
-    }
-
-    const formattedPersonIds = personIds.map(({ id }) => id);
-
-    const messageThreads = await this.getCalendarEventsFromPersonIds(
-      formattedPersonIds,
-      page,
-      pageSize,
-    );
-
-    return messageThreads;
+    return {
+      totalNumberOfCalendarEvents: 0,
+      timelineCalendarEvents: [],
+    };
   }
 }

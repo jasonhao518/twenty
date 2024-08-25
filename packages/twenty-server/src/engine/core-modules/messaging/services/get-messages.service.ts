@@ -5,7 +5,6 @@ import { TimelineThreadsWithTotal } from 'src/engine/core-modules/messaging/dtos
 import { TimelineMessagingService } from 'src/engine/core-modules/messaging/services/timeline-messaging.service';
 import { formatThreads } from 'src/engine/core-modules/messaging/utils/format-threads.util';
 import { TwentyORMManager } from 'src/engine/twenty-orm/twenty-orm.manager';
-import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 
 @Injectable()
 export class GetMessagesService {
@@ -67,35 +66,9 @@ export class GetMessagesService {
     page = 1,
     pageSize: number = TIMELINE_THREADS_DEFAULT_PAGE_SIZE,
   ): Promise<TimelineThreadsWithTotal> {
-    const personRepository =
-      await this.twentyORMManager.getRepository<PersonWorkspaceEntity>(
-        'person',
-      );
-    const personIds = (
-      await personRepository.find({
-        where: {
-          companyId,
-        },
-        select: {
-          id: true,
-        },
-      })
-    ).map((person) => person.id);
-
-    if (personIds.length === 0) {
-      return {
-        totalNumberOfThreads: 0,
-        timelineThreads: [],
-      };
-    }
-
-    const messageThreads = await this.getMessagesFromPersonIds(
-      workspaceMemberId,
-      personIds,
-      page,
-      pageSize,
-    );
-
-    return messageThreads;
+    return {
+      totalNumberOfThreads: 0,
+      timelineThreads: [],
+    };
   }
 }

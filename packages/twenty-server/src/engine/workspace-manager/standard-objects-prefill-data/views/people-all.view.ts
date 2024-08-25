@@ -48,7 +48,7 @@ export const peopleAllView = async (
       {
         fieldMetadataId:
           objectMetadataMap[STANDARD_OBJECT_IDS.person].fields[
-            PERSON_STANDARD_FIELD_IDS.company
+            PERSON_STANDARD_FIELD_IDS.language
           ],
         position: 3,
         isVisible: true,

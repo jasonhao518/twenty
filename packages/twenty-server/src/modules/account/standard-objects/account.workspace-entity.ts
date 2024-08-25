@@ -22,6 +22,7 @@ import { ACCOUNT_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspa
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
 import { ActivityTargetWorkspaceEntity } from 'src/modules/activity/standard-objects/activity-target.workspace-entity';
 import { AttachmentWorkspaceEntity } from 'src/modules/attachment/standard-objects/attachment.workspace-entity';
+import { CompanyWorkspaceEntity } from 'src/modules/company/standard-objects/company.workspace-entity';
 import { NoteTargetWorkspaceEntity } from 'src/modules/note/standard-objects/note-target.workspace-entity';
 import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
@@ -40,7 +41,7 @@ import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-o
 export class AccountWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceField({
     standardId: ACCOUNT_STANDARD_FIELD_IDS.name,
-    type: FieldMetadataType.FULL_NAME,
+    type: FieldMetadataType.TEXT,
     label: 'Name',
     description: 'The opportunity name',
     icon: 'IconTargetArrow',
@@ -187,4 +188,20 @@ export class AccountWorkspaceEntity extends BaseWorkspaceEntity {
 
   @WorkspaceJoinColumn('person')
   personId: string | null;
+
+  // Relations
+  @WorkspaceRelation({
+    standardId: ACCOUNT_STANDARD_FIELD_IDS.company,
+    type: RelationMetadataType.MANY_TO_ONE,
+    label: 'Platform',
+    description: 'Contact’s company',
+    icon: 'IconBuildingSkyscraper',
+    inverseSideTarget: () => CompanyWorkspaceEntity,
+    inverseSideFieldKey: 'accounts',
+  })
+  @WorkspaceIsNullable()
+  company: Relation<CompanyWorkspaceEntity> | null;
+
+  @WorkspaceJoinColumn('company')
+  companyId: string | null;
 }

@@ -326,12 +326,14 @@ export const ACCOUNT_STANDARD_FIELD_IDS = {
   noteTargets: '20202020-1d3f-42d5-a382-db58aabf43d1',
   attachments: '20202020-17c7-4118-83d6-2f4031005201',
   timelineActivities: '20202020-10e2-421f-96c7-19c69d1cf632',
+  company: '20202020-e2f3-448e-b34c-2d625f0025fd',
 };
 
 export const PERSON_STANDARD_FIELD_IDS = {
   name: '20202020-3875-44d5-8c33-a6239011cab8',
   language: '20202020-1bac-457e-b365-adece5fc8153',
-  accounts: '20202020-1bac-457e-b365-bdece5fc8153',
+  accounts: '20202020-1bac-457e-b365-bdece5fc8151',
+  companyId: '20202020-1bac-457e-b365-bdece5fc8152',
   country: '20202020-583e-1642-8533-db761d5fa821',
   birthday: '20202020-927e-44d6-b1ac-c4158d307b91',
   gender: '20202020-827e-44d6-b1ac-c4158d307b91',
@@ -344,7 +346,6 @@ export const PERSON_STANDARD_FIELD_IDS = {
   avatarUrl: '20202020-b8a6-40df-961c-373dc5d2ec21',
   position: '20202020-fcd5-4231-aff5-fff583eaa0b1',
   createdBy: '20202020-f6ab-4d98-af24-a3d5b664148a',
-  company: '20202020-e2f3-448e-b34c-2d625f0025fd',
   pointOfContactForOpportunities: '20202020-911b-4a7d-b67b-918aa9a5b33a',
   activityTargets: '20202020-dee7-4b7f-b50a-1f50bd3be452',
   taskTargets: '20202020-584b-4d3e-88b6-53ab1fa03c3a',

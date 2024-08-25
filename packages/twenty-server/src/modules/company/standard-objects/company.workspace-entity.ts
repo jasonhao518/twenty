@@ -22,22 +22,22 @@ import { WorkspaceJoinColumn } from 'src/engine/twenty-orm/decorators/workspace-
 import { WorkspaceRelation } from 'src/engine/twenty-orm/decorators/workspace-relation.decorator';
 import { COMPANY_STANDARD_FIELD_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-field-ids';
 import { STANDARD_OBJECT_IDS } from 'src/engine/workspace-manager/workspace-sync-metadata/constants/standard-object-ids';
+import { AccountWorkspaceEntity } from 'src/modules/account/standard-objects/account.workspace-entity';
 import { ActivityTargetWorkspaceEntity } from 'src/modules/activity/standard-objects/activity-target.workspace-entity';
 import { AttachmentWorkspaceEntity } from 'src/modules/attachment/standard-objects/attachment.workspace-entity';
 import { FavoriteWorkspaceEntity } from 'src/modules/favorite/standard-objects/favorite.workspace-entity';
 import { NoteTargetWorkspaceEntity } from 'src/modules/note/standard-objects/note-target.workspace-entity';
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
-import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
 import { TimelineActivityWorkspaceEntity } from 'src/modules/timeline/standard-objects/timeline-activity.workspace-entity';
 import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
 
 @WorkspaceEntity({
   standardId: STANDARD_OBJECT_IDS.company,
-  namePlural: 'companies',
-  labelSingular: 'Company',
-  labelPlural: 'Companies',
-  description: 'A company',
+  namePlural: 'platforms',
+  labelSingular: 'Platform',
+  labelPlural: 'Platforms',
+  description: 'A platform',
   icon: 'IconBuildingSkyscraper',
   labelIdentifierStandardId: COMPANY_STANDARD_FIELD_IDS.name,
   softDelete: true,
@@ -152,14 +152,14 @@ export class CompanyWorkspaceEntity extends BaseWorkspaceEntity {
   @WorkspaceRelation({
     standardId: COMPANY_STANDARD_FIELD_IDS.people,
     type: RelationMetadataType.ONE_TO_MANY,
-    label: 'People',
-    description: 'People linked to the company.',
+    label: 'Account',
+    description: 'Account linked to the company.',
     icon: 'IconUsers',
-    inverseSideTarget: () => PersonWorkspaceEntity,
+    inverseSideTarget: () => AccountWorkspaceEntity,
     onDelete: RelationOnDeleteAction.SET_NULL,
   })
   @WorkspaceIsNullable()
-  people: Relation<PersonWorkspaceEntity[]>;
+  accounts: Relation<AccountWorkspaceEntity[]>;
 
   @WorkspaceRelation({
     standardId: COMPANY_STANDARD_FIELD_IDS.accountOwner,
